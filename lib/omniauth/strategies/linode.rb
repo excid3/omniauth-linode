@@ -4,7 +4,7 @@ require 'multi_json'
 module OmniAuth
   module Strategies
     class Linode < OmniAuth::Strategies::OAuth2
-      DEFAULT_SCOPE = 'account:view'
+      DEFAULT_SCOPE = 'account:read_only'
 
       option :name, 'linode'
 
