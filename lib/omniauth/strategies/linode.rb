@@ -14,6 +14,16 @@ module OmniAuth
         :token_url => '/oauth/token',
       }
 
+      uid { raw_info['uid'] }
+
+      info do
+        {
+          name:       raw_info['username'],
+          email:      raw_info['email'],
+          nickname:   raw_info['username']
+        }
+      end
+
       extra do
         {
           'raw_info' => raw_info
@@ -21,7 +31,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('https://api.linode.com/v4/account/settings').parsed
+        @raw_info ||= access_token.get('https://api.linode.com/v4/profile').parsed
       end
 
       protected
